@@ -8,25 +8,16 @@ const Index = () => {
   const [subheadline, setSubheadline] = useState("");
 
   const handleSplit = () => {
-    const lowerCaseRecipeName = recipeName.toLowerCase();
+    const words = recipeName.split(" ");
     let headlinePart = "";
     let subheadlinePart = "";
 
-    const predefinedSplits = ["bakt torsk", "alt-i-ett pastagryte", "risoni", "selleririsotto med svinefilet", "kyllingbryst og risoni", "krydderstekt lyrfilet", "vegetarisk chili sin carne"];
-
-    for (let split of predefinedSplits) {
-      if (lowerCaseRecipeName.includes(split)) {
-        headlinePart = split.charAt(0).toUpperCase() + split.slice(1);
-        subheadlinePart = recipeName.replace(new RegExp(headlinePart, "i"), "").trim();
-        break;
-      }
-    }
-
-    if (!headlinePart) {
-      const words = recipeName.split(" ");
+    if (words.length > 1) {
       const midIndex = Math.floor(words.length / 2);
       headlinePart = words.slice(0, midIndex).join(" ");
       subheadlinePart = words.slice(midIndex).join(" ");
+    } else {
+      headlinePart = recipeName;
     }
 
     setHeadline(headlinePart);
