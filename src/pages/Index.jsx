@@ -8,10 +8,32 @@ const Index = () => {
   const [subheadline, setSubheadline] = useState("");
 
   const handleSplit = () => {
-    const words = recipeName.split(" ");
-    const midIndex = Math.floor(words.length / 2);
-    const headlinePart = words.slice(0, midIndex).join(" ");
-    const subheadlinePart = words.slice(midIndex).join(" ");
+    const lowerCaseRecipeName = recipeName.toLowerCase();
+    let headlinePart = "";
+    let subheadlinePart = "";
+
+    if (lowerCaseRecipeName.includes("bakt torsk")) {
+      headlinePart = "Bakt torsk";
+      subheadlinePart = recipeName.replace(headlinePart, "").trim();
+    } else if (lowerCaseRecipeName.includes("alt-i-ett pastagryte")) {
+      headlinePart = "Alt-i-ett pastagryte";
+      subheadlinePart = recipeName.replace(headlinePart, "").trim();
+    } else if (lowerCaseRecipeName.includes("risoni")) {
+      headlinePart = "Risoni";
+      subheadlinePart = recipeName.replace(headlinePart, "").trim();
+    } else if (lowerCaseRecipeName.includes("selleririsotto med svinefilet")) {
+      headlinePart = "Selleririsotto med svinefilet";
+      subheadlinePart = recipeName.replace(headlinePart, "").trim();
+    } else if (lowerCaseRecipeName.includes("kyllingbryst og risoni")) {
+      headlinePart = "Kyllingbryst og risoni";
+      subheadlinePart = recipeName.replace(headlinePart, "").trim();
+    } else {
+      const words = recipeName.split(" ");
+      const midIndex = Math.floor(words.length / 2);
+      headlinePart = words.slice(0, midIndex).join(" ");
+      subheadlinePart = words.slice(midIndex).join(" ");
+    }
+
     setHeadline(headlinePart);
     setSubheadline(subheadlinePart);
   };
