@@ -12,25 +12,17 @@ const Index = () => {
     let headlinePart = "";
     let subheadlinePart = "";
 
-    if (lowerCaseRecipeName.includes("bakt torsk")) {
-      headlinePart = "Bakt torsk";
-      subheadlinePart = recipeName.replace(headlinePart, "").trim();
-    } else if (lowerCaseRecipeName.includes("alt-i-ett pastagryte")) {
-      headlinePart = "Alt-i-ett pastagryte";
-      subheadlinePart = recipeName.replace(headlinePart, "").trim();
-    } else if (lowerCaseRecipeName.includes("risoni")) {
-      headlinePart = "Risoni";
-      subheadlinePart = recipeName.replace(headlinePart, "").trim();
-    } else if (lowerCaseRecipeName.includes("selleririsotto med svinefilet")) {
-      headlinePart = "Selleririsotto med svinefilet";
-      subheadlinePart = recipeName.replace(headlinePart, "").trim();
-    } else if (lowerCaseRecipeName.includes("kyllingbryst og risoni")) {
-      headlinePart = "Kyllingbryst og risoni";
-      subheadlinePart = recipeName.replace(headlinePart, "").trim();
-    } else if (lowerCaseRecipeName.includes("krydderstekt lyrfilet")) {
-      headlinePart = "Krydderstekt lyrfilet";
-      subheadlinePart = recipeName.replace(headlinePart, "").trim();
-    } else {
+    const predefinedSplits = ["bakt torsk", "alt-i-ett pastagryte", "risoni", "selleririsotto med svinefilet", "kyllingbryst og risoni", "krydderstekt lyrfilet"];
+
+    for (let split of predefinedSplits) {
+      if (lowerCaseRecipeName.includes(split)) {
+        headlinePart = split.charAt(0).toUpperCase() + split.slice(1);
+        subheadlinePart = recipeName.replace(new RegExp(headlinePart, "i"), "").trim();
+        break;
+      }
+    }
+
+    if (!headlinePart) {
       const words = recipeName.split(" ");
       const midIndex = Math.floor(words.length / 2);
       headlinePart = words.slice(0, midIndex).join(" ");
