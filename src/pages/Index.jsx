@@ -27,6 +27,9 @@ const Index = () => {
     } else if (lowerCaseRecipeName.includes("kyllingbryst og risoni")) {
       headlinePart = "Kyllingbryst og risoni";
       subheadlinePart = recipeName.replace(headlinePart, "").trim();
+    } else if (lowerCaseRecipeName.includes("krydderstekt lyrfilet")) {
+      headlinePart = "Krydderstekt lyrfilet";
+      subheadlinePart = recipeName.replace(headlinePart, "").trim();
     } else {
       const words = recipeName.split(" ");
       const midIndex = Math.floor(words.length / 2);
