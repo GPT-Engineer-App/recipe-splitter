@@ -12,7 +12,7 @@ const Index = () => {
     let headlinePart = "";
     let subheadlinePart = "";
 
-    const predefinedSplits = ["bakt torsk", "alt-i-ett pastagryte", "risoni", "selleririsotto med svinefilet", "kyllingbryst og risoni", "krydderstekt lyrfilet"];
+    const predefinedSplits = ["bakt torsk", "alt-i-ett pastagryte", "risoni", "selleririsotto med svinefilet", "kyllingbryst og risoni", "krydderstekt lyrfilet", "vegetarisk chili sin carne"];
 
     for (let split of predefinedSplits) {
       if (lowerCaseRecipeName.includes(split)) {
